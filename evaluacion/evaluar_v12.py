@@ -8,11 +8,11 @@ from stable_baselines3 import PPO
 from stable_baselines3.common.policies import ActorCriticPolicy
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 
-# El entorno de V12 vive en la carpeta entorno/ (entorno/v12.py)
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "entorno"))
+# El entorno de V12 vive en ../entorno/ y el generador en ../entrenamiento/
+_BASE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_BASE, "..", "entorno"))
+sys.path.insert(0, os.path.join(_BASE, "..", "entrenamiento"))
 from v12 import Entorno3SAT
-
-# El generador de instancias mentira-optimas (el mismo que usa V14)
 from generador_mentira_v14 import generar_pool
 
 
@@ -127,7 +127,7 @@ def ejecutar_test_mentira(env, model, instancia, meta):
 
 def evaluar(nombre_modelo):
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    ruta = os.path.join(BASE_DIR, "modelos", nombre_modelo)
+    ruta = os.path.join(BASE_DIR, "..", "modelos definitivos", nombre_modelo)
     if not ruta.endswith(".zip"):
         ruta += ".zip"
     print(f"Buscando modelo en: {ruta}")
@@ -189,6 +189,6 @@ def evaluar(nombre_modelo):
 
 
 if __name__ == "__main__":
-    # Por defecto, el modelo V12 (= V13g) entrenado a 100M.
-    modelo = sys.argv[1] if len(sys.argv) > 1 else "mappo_3sat_v13g_mappo_100M_100035840_steps"
+    # Por defecto carga modelos definitivos/v12.zip
+    modelo = sys.argv[1] if len(sys.argv) > 1 else "v12.zip"
     evaluar(modelo)
