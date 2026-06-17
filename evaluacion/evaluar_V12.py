@@ -3,9 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from stable_baselines3 import PPO
 
-from mi_entorno_3sat_v13g_mappo import Entorno3SAT
-from entrenar_mappo_v13g import MAPPOPolicy, SplitMlpExtractor
-
+from v12 import Entorno3SAT
+from entrenar_mappo_V12 import MAPPOPolicy, SplitMlpExtractor
 
 class MAPPOPolicyV13g(MAPPOPolicy):
     def _build_mlp_extractor(self) -> None:
