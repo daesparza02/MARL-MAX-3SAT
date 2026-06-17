@@ -76,7 +76,7 @@ Scripts que cargan un modelo entrenado y lo evalúan sobre 500 partidas aleatori
 
 ---
 
-## 📂 `modelos definitivos/` — Modelos entrenados
+##  `modelos definitivos/` — Modelos entrenados
 
 Contiene los `.zip` finales de cada versión, listos para ser cargados con `PPO.load()`. Son los modelos cuyos resultados aparecen en las tablas comparativas de la memoria.
 
